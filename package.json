@@ -1,0 +1,26 @@
+{
+  "name": "Notification",
+  "version": "0.0.1",
+  "private": true,
+  "description": "New Swagger API Project",
+  "keywords": [],
+  "author": "",
+  "license": "",
+  "main": "app.js",
+  "dependencies": {
+    "gulp": "^4.0.0",
+    "restify": "^4.0.2",
+    "swagger-restify-mw": "^0.7.0",
+    "swagger-ui": "^3.20.3",
+    "swagger-ui-dist": "^3.20.3"
+  },
+  "devDependencies": {
+    "js-yaml": "^3.12.0",
+    "should": "^7.1.0",
+    "supertest": "^1.0.0"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "test": "swagger project test"
+  }
+}
