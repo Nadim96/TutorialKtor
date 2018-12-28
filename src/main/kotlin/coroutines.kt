@@ -1,3 +1,4 @@
+/*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.*
 import kotlinx.coroutines.selects.*
@@ -25,4 +26,4 @@ fun main() = runBlocking<Unit> {
     println("Done consuming")
     coroutineContext.cancelChildren()
 //sampleEnd
-}
+}*/

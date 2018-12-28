@@ -43,15 +43,15 @@ open class SimpleJWT(val secret: String) {
 }
 
 //user data storage
-class User(val name: String, val password: String)
+class User( val name: String, val password: String)
 
 
 val users = Collections.synchronizedMap(
-    listOf(User("test", "test"))
+    listOf(User( "test", "test"))
         .associateBy { it.name }
         .toMutableMap()
 )
-class LoginRegister(val user: String, val password: String)
+class LoginRegister( val user: String, val password: String)
 
 
 fun main() {
@@ -105,6 +105,9 @@ fun main() {
                     if (user.password != post.password) error("Invalid credentials")
                     call.respond(mapOf("token" to simpleJwt.sign(user.name)))
                 }
+            }
+            route("/route/path/to/ws"){
+
             }
         }
 
