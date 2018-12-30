@@ -40,8 +40,5 @@ suspend fun main() {
             println(message.readText())
         }
 
-        for (message in incoming.map { }) {
-            println("kek")
-        }
     }
 }

@@ -36,6 +36,8 @@ class ChatClient(val session: DefaultWebSocketSession) {
     val name = "user$id"
 }
 
+
+
 fun main(){
     embeddedServer(Netty, 8080) {
         install(ContentNegotiation) {
@@ -47,19 +49,21 @@ fun main(){
             pingPeriod = Duration.ofMinutes(1)
         }
 
+
+
+
         routing {
 
             val clients = Collections.synchronizedSet(LinkedHashSet<ChatClient>())
 
-            get("/chat") {
+            get("/websocket") {
                 connections.add(clients.toString())
-                call.respondText(outsideText.toString() + connections.toString())
+                call.respondText(outsideText.toString() + connections.toString() + connections.size)
 
                 }
 
 
-
-            webSocket("/chat") { // this: DefaultWebSocketSession
+            webSocket("/websocket") { // this: DefaultWebSocketSession
                 val client = ChatClient(this)
                 clients += client
                 try {
