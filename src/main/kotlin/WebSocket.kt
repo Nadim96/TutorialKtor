@@ -30,6 +30,7 @@ import java.util.concurrent.atomic.AtomicInteger
 val outsideText: MutableList<String> = mutableListOf("1")
 val connections: MutableList<String> = mutableListOf("2")
 
+
 class ChatClient(val session: DefaultWebSocketSession) {
     companion object { var lastId = AtomicInteger(0) }
     val id = lastId.getAndIncrement()
@@ -67,15 +68,18 @@ fun main(){
                 val client = ChatClient(this)
                 clients += client
                 try {
+
                     //new client connection
                     for (other in clients.toList()) {
                         other.session.outgoing.send(Frame.Text("new client connected named $client"))
                     }
-                    while (true) {
+                    println("new client connected $client")
+                        while (true) {
                         val frame = incoming.receive()
                         when (frame) {
                             is Frame.Text -> {
                                 val text = frame.readText()
+                                println("message from client: $text")
                                 outsideText.add(text)
                                 // Iterate over all the connections and send data such as user name
                                 val textToSend = "${client.name} said: $text from $client with id ${client.id} and session ${client.session}"

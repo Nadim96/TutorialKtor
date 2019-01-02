@@ -34,7 +34,7 @@ val client = HttpClient(CIO) {
 
 
 suspend fun main() {
-    client.ws( host = "localhost", port = 8080, path = "/chat") { // this: DefaultClientWebSocketSession
+    client.ws( host = "localhost", port = 8080, path = "/websocket") { // this: DefaultClientWebSocketSession
 
         for (message in incoming.map { it as? Frame.Text }.filterNotNull()) {
             println(message.readText())
