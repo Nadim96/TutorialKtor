@@ -54,4 +54,5 @@ dependencies {
     api "io.ktor:ktor-client-mock-native:$ktor_version"
     compile 'com.github.DavidMellul:Kotlin-Publish-Subscribe:-SNAPSHOT'
     implementation 'io.reactivex.rxjava2:rxkotlin:x.y.z'
+    compile "io.ktor:ktor-freemarker:$ktor_version" 
 }

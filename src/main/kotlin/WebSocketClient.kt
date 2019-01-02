@@ -13,9 +13,12 @@ import io.ktor.http.cio.websocket.readText
 import io.ktor.jackson.jackson
 import io.ktor.server.engine.embeddedServer
 import io.ktor.server.netty.Netty
+import kotlinx.coroutines.ObsoleteCoroutinesApi
 import kotlinx.coroutines.channels.filterNotNull
 import kotlinx.coroutines.channels.map
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.io.ByteReadChannel
+
 
 
 val client = HttpClient(CIO) {
@@ -33,12 +36,20 @@ val client = HttpClient(CIO) {
 }
 
 
+@ObsoleteCoroutinesApi
 suspend fun main() {
-    client.ws( host = "localhost", port = 8080, path = "/websocket") { // this: DefaultClientWebSocketSession
+
+
+    val cl1 = client.ws( host = "localhost", port = 8080, path = "/websocket") { // this: DefaultClientWebSocketSession
+
 
         for (message in incoming.map { it as? Frame.Text }.filterNotNull()) {
             println(message.readText())
         }
-
     }
+
+
 }
+
+
+
