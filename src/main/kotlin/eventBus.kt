@@ -10,12 +10,20 @@ import kotlin.reflect.KProperty1
 import kotlin.reflect.full.valueParameters
 
 
+//events
+
+
+data class SomeEvent(val text: String)
+data class somethingelse(val text: String)
+data class anotherelse(val text: String)
+
+
 
 class EventBus {
 
     public val channel = ConflatedBroadcastChannel<Any>()
 
-    suspend fun send(event: Any, context: CoroutineContext = Dispatchers.IO) {
+    suspend fun send(event: Any){
                channel.send(event)
         channel.offer(event)
                 println("iets")
